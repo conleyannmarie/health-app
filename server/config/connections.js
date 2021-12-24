@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-mongoose.connect(process.env.MONGODB_URI || // "need code here", {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/health-app', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,

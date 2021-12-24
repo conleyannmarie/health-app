@@ -1,6 +1,8 @@
-const jwt = require //("");
+const jwt = require ("jsonwebtoken");
 
-const secret = //"";
+const secret = 'shhcodebutchers';
+
+const expiration = '2h'
 
 
 module.exports = {
