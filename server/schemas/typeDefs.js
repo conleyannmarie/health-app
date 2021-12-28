@@ -7,9 +7,9 @@ const typeDefs = gql`
       _id: ID
       username: String
       email: String
-      doctorCount: Int
+      providerCount: Int
       messages: [Message]
-      doctors: [User]
+      providers: [User]
    }
 
    type Message {
@@ -41,7 +41,7 @@ const typeDefs = gql`
       addUser(username: String!, email: String!, password: String!): Auth
       addMessage(messageText: String!): Message
       addReply(messageId: ID!, replyBody: String!): Message
-      addDoctor(doctorId: ID!): User
+      addProvider(providerId: ID!): User
    }
 
    type Auth {

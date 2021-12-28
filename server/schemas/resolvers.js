@@ -15,7 +15,7 @@ const resolvers = {
             const userData = await User.findOne({ _id: context.user._id }) //
                .select('-__v -password')
                .populate('messages') //
-               .populate('doctors');
+               .populate('providers');
 
             return userData;
          }
@@ -35,7 +35,7 @@ const resolvers = {
       users: async () => {
          return User.find() //
             .select('-__v -password')
-            .populate('doctors')
+            .populate('providers')
             .populate('messages');
       },
 
@@ -43,7 +43,7 @@ const resolvers = {
       user: async (parent, { username }) => {
          return User.findOne({ username }) //
             .select('-__v -password')
-            .populate('doctors')
+            .populate('providers')
             .populate('messages');
       },
    },
@@ -88,13 +88,13 @@ const resolvers = {
          throw new AuthenticationError('You need to be logged in!');
       },
 
-      addDoctor: async (parent, { doctorId }, context) => {
+      addProvider: async (parent, { providerId }, context) => {
          if (context.user) {
             const updatedUser = await User.findOneAndUpdate(
                { _id: context.user._id },
-               { $addToSet: { doctors: doctorId } },
+               { $addToSet: { providers: providerId } },
                { new: true }
-            ).populate('doctors');
+            ).populate('providers');
 
             return updatedUser;
          }
