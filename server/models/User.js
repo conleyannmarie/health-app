@@ -21,6 +21,18 @@ const userSchema = new Schema(
          required: true,
          minlength: 5,
       },
+
+      messages: [
+         {
+            type: Schema.Types.ObjectId,
+            ref: 'Message',
+         },
+      ],
+      password: {
+         type: String,
+         required: true,
+         minlength: 5,
+      },
       thoughts: [
          {
             type: Schema.Types.ObjectId,
