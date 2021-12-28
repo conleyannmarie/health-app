@@ -41,6 +41,6 @@ providerSchema.methods.isCorrectPassword = async function (password) {
 };
 
 
-const Provider = model("User", providerSchema);
+const Provider = model("Provider", providerSchema);
 
 module.exports = Provider;

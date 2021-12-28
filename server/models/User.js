@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
-const messageSchema = require("Message")
+const Message = require("Message")
 
 const userSchema = new Schema(
   {
