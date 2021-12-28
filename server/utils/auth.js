@@ -1,15 +1,9 @@
-<<<<<<< HEAD
-const jwt = require('jsonwebtoken');
-const secret = 'mysecrethdhdhdhdh';
-const expiration = '24h';
-=======
 const jwt = require ("jsonwebtoken");
 
 const secret = 'shhcodebutchers';
 
 const expiration = '2h'
 
->>>>>>> 2e2f3870396c677f19e9c7b0f63aac59d4fd5d92
 
 module.exports = {
    //* The signToken() function expects a user object and will add that user's username, email, and _id properties

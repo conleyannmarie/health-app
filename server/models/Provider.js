@@ -1,6 +1,5 @@
 const { Schema, model } = require("mongoose");
-const reactionSchema = require("./Reaction");
-const dateFormat = require("../utils/dateFormat");
+const replySchema = require("./Reply");
 const { Provider } = require(".");
 
 const providerSchema = new Schema({
@@ -41,9 +40,6 @@ providerSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-providerSchema.virtual("friendCount").get(function () {
-  return this.friends.length;
-});
 
 const Provider = model("User", providerSchema);
 

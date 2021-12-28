@@ -3,7 +3,7 @@ const dateFormat = require("../utils/dateFormat");
 
 const replySchema = new Schema(
   {
-    messageBody: {
+    replyBody: {
       type: String,
       required: false,
       maxlength: 280,
