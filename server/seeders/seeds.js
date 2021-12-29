@@ -1,10 +1,10 @@
 const faker = require('faker');
 
 const db = require('../config/connection');
-const { Thought, User } = require('../models');
+const { Message, User } = require('../models');
 
 db.once('open', async () => {
-  await Thought.deleteMany({});
+  await Message.deleteMany({});
   await User.deleteMany({});
 
   //? create user data (50 users?)
@@ -20,52 +20,52 @@ db.once('open', async () => {
 
   const createdUsers = await User.collection.insertMany(userData);
 
-  // create friends
+  // create providers
   for (let i = 0; i < 100; i += 1) {
     const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
     const { _id: userId } = createdUsers.ops[randomUserIndex];
 
-    let friendId = userId;
+    let providerId = userId;
 
-    while (friendId === userId) {
+    while (providerId === userId) {
       const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
-      friendId = createdUsers.ops[randomUserIndex];
+      providerId = createdUsers.ops[randomUserIndex];
     }
 
-    await User.updateOne({ _id: userId }, { $addToSet: { friends: friendId } });
+    await User.updateOne({ _id: userId }, { $addToSet: { providers: providerId } });
   }
 
-  // create thoughts
-  let createdThoughts = [];
+  // create messages
+  let createdMessages = [];
   for (let i = 0; i < 100; i += 1) {
-    const thoughtText = faker.lorem.words(Math.round(Math.random() * 20) + 1);
+    const messageText = faker.lorem.words(Math.round(Math.random() * 20) + 1);
 
     const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
     const { username, _id: userId } = createdUsers.ops[randomUserIndex];
 
-    const createdThought = await Thought.create({ thoughtText, username });
+    const createdMessage = await Message.create({ messageText, username });
 
     const updatedUser = await User.updateOne(
       { _id: userId },
-      { $push: { thoughts: createdThought._id } }
+      { $push: { messages: createdMessage._id } }
     );
 
-    createdThoughts.push(createdThought);
+    createdMessages.push(createdMessage);
   }
 
-  // create reactions
+  // create replies
   for (let i = 0; i < 100; i += 1) {
-    const reactionBody = faker.lorem.words(Math.round(Math.random() * 20) + 1);
+    const replyBody = faker.lorem.words(Math.round(Math.random() * 20) + 1);
 
     const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
     const { username } = createdUsers.ops[randomUserIndex];
 
-    const randomThoughtIndex = Math.floor(Math.random() * createdThoughts.length);
-    const { _id: thoughtId } = createdThoughts[randomThoughtIndex];
+    const randomMessageIndex = Math.floor(Math.random() * createdMessages.length);
+    const { _id: messageId } = createdMessages[randomMessageIndex];
 
-    await Thought.updateOne(
-      { _id: thoughtId },
-      { $push: { reactions: { reactionBody, username } } },
+    await Message.updateOne(
+      { _id: messageId },
+      { $push: { replies: { replyBody, username } } },
       { runValidators: true }
     );
   }
