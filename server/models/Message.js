@@ -9,15 +9,16 @@ const messageSchema = new Schema(
          required: false,
          maxlength: 280,
       },
-      username: {
-         type: String,
-         required: true,
-      },
       createdAt: {
          type: Date,
          default: Date.now,
          get: (timestamp) => dateFormat(timestamp),
       },
+      username: {
+         type: String,
+         required: true,
+      },
+      
       replies: [replySchema]
    },
    {
@@ -29,8 +30,8 @@ const messageSchema = new Schema(
 
 messageSchema.virtual('replyCount').get(function() {
    return this.replies.length;
- });
- 
- const Message = model('Message', messageSchema);
- 
- module.exports = Message;
+});
+
+const Message = model('Message', messageSchema);
+
+module.exports = Message;
