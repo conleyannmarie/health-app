@@ -15,10 +15,11 @@ const typeDefs = gql`
    type User {
       _id: ID
       username: String
+      provider: Boolean
+      specialty: String
       email: String
-      providerCount: Int
       messages: [Message]
-      providers: [User]
+      appointments: [Appointment]
    }
 
    type Reply {

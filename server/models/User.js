@@ -1,6 +1,7 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 const Message = require('./Message');
+const Appointment = require('./Appointment');
 
 const userSchema = new Schema(
    {
@@ -9,6 +10,12 @@ const userSchema = new Schema(
          required: true,
          unique: true,
          trim: true,
+      },
+      provider: {
+         type: Boolean,
+      },
+      specialty: {
+         type: String,
       },
       email: {
          type: String,
@@ -21,24 +28,21 @@ const userSchema = new Schema(
          required: true,
          minlength: 5,
       },
-
       messages: [
          {
             type: Schema.Types.ObjectId,
             ref: 'Message',
          },
       ],
-      password: {
-         type: String,
-         required: true,
-         minlength: 5,
-      },
-      providers: [
-         {
-            type: Schema.Types.ObjectId,
-            ref: 'User',
-         },
-      ],
+
+      appointments: [Appointment],
+
+      // providers: [
+      //    {
+      //       type: Schema.Types.ObjectId,
+      //       ref: 'User',
+      //    },
+      // ],
    },
    {
       toJSON: {
