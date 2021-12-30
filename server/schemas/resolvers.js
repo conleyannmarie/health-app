@@ -1,5 +1,5 @@
 // Import Thought & Users
-const { User, Message } = require('../models');
+const { User, Message, Appointment } = require('../models');
 
 // Import Authentication handling
 const { AuthenticationError } = require('apollo-server-express');
@@ -23,14 +23,6 @@ const resolvers = {
          throw new AuthenticationError('Not logged in');
       },
 
-      messages: async (parent, { username }) => {
-         const params = username ? { username } : {};
-         return Message.find(params).sort({ createdAt: -1 });
-      },
-      message: async (parent, { _id }) => {
-         return Message.findOne({ _id });
-      },
-
       // Get all users
       users: async () => {
          return User.find() //
@@ -45,6 +37,14 @@ const resolvers = {
             .select('-__v -password')
             .populate('providers')
             .populate('messages');
+      },
+
+      messages: async (parent, { username }) => {
+         const params = username ? { username } : {};
+         return Message.find(params).sort({ createdAt: -1 });
+      },
+      message: async (parent, { _id }) => {
+         return Message.findOne({ _id });
       },
    },
    Mutation: {
@@ -66,7 +66,7 @@ const resolvers = {
 
             await User.findByIdAndUpdate(
                { _id: context.user._id },
-               { $push: { thoughts: message._id } },
+               { $push: { messages: message._id } },
                //! Without this flag, Mongo would return the original document instead
                //! of updated document.
                { new: true }
