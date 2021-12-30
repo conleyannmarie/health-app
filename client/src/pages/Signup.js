@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import {ADD_USER} from '../utils/mutations';
+import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 const Signup = () => {
-   const [formState, setFormState] = useState({ username: '', email: '', password: '' });
+   const [formState, setFormState] = useState({
+      username: '',
+      email: '',
+      password: '',
+      isProvider: false,
+      specialty: 'not defined',
+   });
 
    const [addUser, { error }] = useMutation(ADD_USER);
 
@@ -21,13 +27,15 @@ const Signup = () => {
    // submit form
    const handleFormSubmit = async (event) => {
       event.preventDefault();
-
+      console.log('inside handleFormSubmit');
       //use try/catch instead of promises to handle errors
       try {
          // execute addUser mutation and pass in variable data from form
+         console.log('file: Signup.js ~ line 34 ~ formState', formState);
          const { data } = await addUser({
             variables: { ...formState },
          });
+         console.log('file: Signup.js ~ line 38 ~ data', data);
          Auth.login(data.addUser.token); //* set token to localStorage and reload page to homepage
       } catch (e) {
          console.error(e);
@@ -68,6 +76,26 @@ const Signup = () => {
                         value={formState.password}
                         onChange={handleChange}
                      />
+                     <input
+                        className='form-input'
+                        placeholder='user type'
+                        name='isProvider'
+                        type='isProvider'
+                        id='isProvider'
+                        value={formState.isProvider}
+                        onChange={handleChange}
+                     />
+                     {formState.isProvider && (
+                        <input
+                           className='form-input'
+                           placeholder='specialty'
+                           name='specialty'
+                           type='specialty'
+                           id='specialty'
+                           value={formState.specialty}
+                           onChange={handleChange}
+                        />
+                     )}
                      <button className='btn d-block w-100' type='submit'>
                         Submit
                      </button>

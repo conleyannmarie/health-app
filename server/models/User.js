@@ -21,28 +21,19 @@ const userSchema = new Schema(
          required: true,
          minlength: 5,
       },
+      isProvider: {
+         type: Boolean,
+         required: true,
+      },
+      
+      specialty: {
+         type: String,
+      },
 
       messages: [
          {
             type: Schema.Types.ObjectId,
             ref: 'Message',
-         },
-      ],
-      password: {
-         type: String,
-         required: true,
-         minlength: 5,
-      },
-      thoughts: [
-         {
-            type: Schema.Types.ObjectId,
-            ref: 'Thought',
-         },
-      ],
-      friends: [
-         {
-            type: Schema.Types.ObjectId,
-            ref: 'User',
          },
       ],
    },

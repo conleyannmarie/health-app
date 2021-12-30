@@ -52,6 +52,10 @@ const resolvers = {
          const user = await User.create(args);
          const token = signToken(user);
 
+         console.log('file: resolvers.js ~ line 55 ~ args', args);
+         console.log('file: resolvers.js ~ line 56 ~ user', user);
+         console.log('file: resolvers.js ~ line 57 ~ token', token);
+
          return { token, user };
       },
 
