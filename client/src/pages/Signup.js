@@ -8,7 +8,7 @@ const Signup = () => {
       username: '',
       email: '',
       password: '',
-      isProvider: false,
+      isProvider: true,
       specialty: 'not defined',
    });
 
