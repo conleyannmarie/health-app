@@ -4,7 +4,7 @@ import ThoughtForm from '../components/ThoughtForm';
 import ThoughtList from '../components/ThoughtList';
 import { QUERY_THOUGHTS, QUERY_ME_BASIC } from '../utils/queries';
 import Auth from '../utils/auth';
-import FriendList from '../components/FriendList';
+
 
 const Home = () => {
    const loggedIn = Auth.loggedIn();
@@ -33,16 +33,9 @@ const Home = () => {
                ) : (
                   <ThoughtList thoughts={thoughts} title='Some Feed for Thought(s)...' />
                )}
-            </div>
-            {loggedIn && userData ? (
-               <div className='col-12 col-lg-3 mb-3'>
-                  <FriendList
-                     username={userData.me.username}
-                     friendCount={userData.me.friendCount}
-                     friends={userData.me.friends}
-                  />
+           
                </div>
-            ) : null}
+         
          </div>
       </main>
    );

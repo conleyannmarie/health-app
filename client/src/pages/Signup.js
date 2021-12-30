@@ -21,6 +21,7 @@ const Signup = () => {
    // submit form
    const handleFormSubmit = async (event) => {
       event.preventDefault();
+      console.log(formState);
 
       //use try/catch instead of promises to handle errors
       try {
