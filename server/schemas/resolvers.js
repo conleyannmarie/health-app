@@ -42,6 +42,7 @@ const resolvers = {
       messages: async (parent, { username }) => {
          const params = username ? { username } : {};
          return Message.find(params).sort({ createdAt: -1 });
+         
       },
       message: async (parent, { _id }) => {
          return Message.findOne({ _id });
@@ -59,7 +60,7 @@ const resolvers = {
 
       addMessage: async (parent, args, context) => {
          if (context.user) {
-            // const thought = await Thought.create({ ...astFromValue, username: context.user.username });
+            // const thought = await Message.create({ ...astFromValue, username: context.user.username });
             const message = await Message.create({ ...args, username: context.user.username });
 
             await User.findByIdAndUpdate(
