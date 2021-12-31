@@ -8,8 +8,9 @@ const Signup = () => {
       username: '',
       email: '',
       password: '',
-      isProvider: true,
-      specialty: 'not defined',
+      isProvider: false,
+      specialty: 'your specialty',
+      npiNumber: 'your 10 digit npi number',
    });
 
    const [addUser, { error }] = useMutation(ADD_USER);
@@ -76,11 +77,12 @@ const Signup = () => {
                         value={formState.password}
                         onChange={handleChange}
                      />
+                     <label for='isProvider'>Check if you are  a provider: </label>
                      <input
                         className='form-input'
                         placeholder='user type'
                         name='isProvider'
-                        type='isProvider'
+                        type='checkbox'
                         id='isProvider'
                         value={formState.isProvider}
                         onChange={handleChange}
@@ -93,6 +95,17 @@ const Signup = () => {
                            type='specialty'
                            id='specialty'
                            value={formState.specialty}
+                           onChange={handleChange}
+                        />
+                     )}
+                     {formState.isProvider && (
+                        <input
+                           className='form-input'
+                           placeholder='NPI Number'
+                           name='npiNumber'
+                           type='npiNumber'
+                           id='npiNumber'
+                           value={formState.npiNumber}
                            onChange={handleChange}
                         />
                      )}

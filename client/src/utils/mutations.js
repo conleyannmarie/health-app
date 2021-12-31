@@ -18,9 +18,17 @@ export const ADD_USER = gql`
       $email: String!
       $password: String!
       $isProvider: Boolean!
-      $specialty: String
+      $specialty: String!
+      $npiNumber: String!
    ) {
-      addUser(username: $username, email: $email, password: $password, isProvider: $isProvider, specialty: $specialty) {
+      addUser(
+         username: $username
+         email: $email
+         password: $password
+         isProvider: $isProvider
+         specialty: $specialty
+         npiNumber: $npiNumber
+      ) {
          token
          user {
             _id

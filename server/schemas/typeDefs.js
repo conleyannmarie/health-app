@@ -18,6 +18,7 @@ const typeDefs = gql`
       email: String
       isProvider: Boolean
       specialty: String
+      npiNumber: String
       messages: [Message]
    }
 
@@ -38,7 +39,14 @@ const typeDefs = gql`
 
    type Mutation {
       login(email: String!, password: String!): Auth
-      addUser(username: String!, email: String!, password: String!, isProvider: Boolean!, specialty: String): Auth
+      addUser(
+         username: String!
+         email: String!
+         password: String!
+         isProvider: Boolean!
+         specialty: String!
+         npiNumber: String!
+      ): Auth
       addMessage(messageText: String!): Message
       addReply(messageId: ID!, replyBody: String!): Message
       addProvider(providerId: ID!): User

@@ -25,9 +25,16 @@ const userSchema = new Schema(
          type: Boolean,
          required: true,
       },
-      
+
       specialty: {
          type: String,
+         required: true,
+      },
+
+      npiNumber: {
+         type: String,
+         minlength: 10,
+         required: true,
       },
 
       messages: [
