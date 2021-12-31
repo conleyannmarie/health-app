@@ -30,7 +30,7 @@ const userSchema = new Schema(
       providers: [
          {
             type: Schema.Types.ObjectId,
-            ref: 'User',
+            ref: 'Message',
          },
       ],
    },

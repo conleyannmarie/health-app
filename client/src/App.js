@@ -15,13 +15,13 @@ import Footer from './components/Footer';
 
 import Home from './pages/Home';
 
-// const httpLink = createHttpLink({
-//    uri: 'http://localhost:3001/graphql',
-// });
-
 const httpLink = createHttpLink({
-   uri: '/graphql',
+   uri: 'http://localhost:3001/graphql',
 });
+
+// const httpLink = createHttpLink({
+//    uri: '/graphql',
+// });
 
 //* With the configuration of authLink, we use the setContext() function to retrieve the token from localStorage and
 //* set the HTTP request headers of every request to include the token, whether the request needs it or not. This is

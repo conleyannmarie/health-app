@@ -1,5 +1,5 @@
 // Import Thought & Users
-const { User, Message } = require('../models');
+const { User, Message, Appointment } = require('../models');
 
 // Import Authentication handling
 const { AuthenticationError } = require('apollo-server-express');
@@ -47,13 +47,15 @@ const resolvers = {
       message: async (parent, { _id }) => {
          return Message.findOne({ _id });
       },
-
-      
    },
    Mutation: {
       addUser: async (parent, args) => {
          const user = await User.create(args);
          const token = signToken(user);
+
+         console.log('file: resolvers.js ~ line 55 ~ args', args);
+         console.log('file: resolvers.js ~ line 56 ~ user', user);
+         console.log('file: resolvers.js ~ line 57 ~ token', token);
 
          return { token, user };
       },
