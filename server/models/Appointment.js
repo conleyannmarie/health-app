@@ -9,7 +9,7 @@ const apptSchema = new Schema(
       },
 
       apptTime: {
-         type: String,
+         type: Date,
          required: true,
       },
 
@@ -21,6 +21,7 @@ const apptSchema = new Schema(
 
       confirmed: {
          type: Boolean,
+         required: true,
       },
    },
    {

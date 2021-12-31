@@ -38,6 +38,22 @@ export const ADD_USER = gql`
    }
 `;
 
+export const ADD_APPT = gql`
+   mutation addAppt(
+      $apptDate: Date!
+      $apptTime: String!
+      $apptWith: User!
+      $confirmed: Boolean!
+   ) {
+      addAppt(
+         apptDate: $apptDate
+         apptTime: $apptTime
+         apptWith: $apptWith
+         confirmed: $confirmed
+      )
+   }
+`;
+
 export const ADD_FRIEND = gql`
    mutation addFriend($id: ID!) {
       addFriend(friendId: $id) {

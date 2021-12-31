@@ -22,5 +22,8 @@
    "homepage": "https://github.com/conleyannmarie/health-app#readme",
    "devDependencies": {
       "concurrently": "^6.5.0"
+   },
+   "dependencies": {
+      "graphql-scalars": "^1.14.1"
    }
 }
