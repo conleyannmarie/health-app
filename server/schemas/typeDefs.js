@@ -43,9 +43,9 @@ const typeDefs = gql`
          username: String!
          email: String!
          password: String!
-         isProvider: Boolean!
-         specialty: String!
-         npiNumber: String!
+         isProvider: Boolean
+         specialty: String
+         npiNumber: String
       ): Auth
       addMessage(messageText: String!): Message
       addReply(messageId: ID!, replyBody: String!): Message

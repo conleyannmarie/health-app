@@ -9,8 +9,8 @@ const Signup = () => {
       email: '',
       password: '',
       isProvider: false,
-      specialty: 'your specialty',
-      npiNumber: 'your 10 digit npi number',
+      specialty: '',
+      npiNumber: '',
    });
 
    const [addUser, { error }] = useMutation(ADD_USER);
@@ -18,6 +18,22 @@ const Signup = () => {
    // update state based on form input changes
    const handleChange = (event) => {
       const { name, value } = event.target;
+      console.log('file: Signup.js ~ line 21 ~ event.target', event.target);
+      console.log('file: Signup.js ~ line 22 ~ name', name);
+      console.log('file: Signup.js ~ line 23 ~ value', value);
+
+      setFormState({
+         ...formState,
+         [name]: value,
+      });
+   };
+
+   const handleCheckChange = (event) => {
+      let { name, value } = event.target;
+      value = event.target.checked;
+      console.log('file: Signup.js ~ line 34 ~ event.target', event.target);
+      console.log('file: Signup.js ~ line 35 ~ name', name);
+      console.log('file: Signup.js ~ line 36 ~ value', value);
 
       setFormState({
          ...formState,
@@ -77,16 +93,19 @@ const Signup = () => {
                         value={formState.password}
                         onChange={handleChange}
                      />
-                     <label for='isProvider'>Check if you are  a provider: </label>
-                     <input
-                        className='form-input'
-                        placeholder='user type'
-                        name='isProvider'
-                        type='checkbox'
-                        id='isProvider'
-                        value={formState.isProvider}
-                        onChange={handleChange}
-                     />
+                     <div className='isProvider'>
+                        <label>Check if you are a provider: </label>
+
+                        <input
+                           className='form-input'
+                           placeholder='user type'
+                           name='isProvider'
+                           type='checkbox'
+                           id='isProvider'
+                           value={formState.isProvider}
+                           onChange={handleCheckChange}
+                        />
+                     </div>
                      {formState.isProvider && (
                         <input
                            className='form-input'
