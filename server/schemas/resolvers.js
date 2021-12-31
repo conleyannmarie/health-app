@@ -83,7 +83,7 @@ const resolvers = {
          if (context.user) {
             const updatedMessage = await Message.findOneAndUpdate(
                { _id: messageId },
-               { $push: { replys: { replyBody, username: context.user.username } } },
+               { $push: { replies: { replyBody, username: context.user.username } } },
                { new: true, runValidators: true }
             );
 

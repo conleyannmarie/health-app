@@ -9,7 +9,7 @@ const typeDefs = gql`
       createdAt: String
       username: String
       replyCount: Int
-      replys: [Reply]
+      replies: [Reply]
    }
 
    type User {

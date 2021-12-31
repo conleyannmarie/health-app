@@ -1,11 +1,12 @@
 const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
+const replySchema = require('../models/Reply')
 
 const messageSchema = new Schema(
    {
-      messageBody: {
+      messageText: {
          type: String,
-         required: false,
+         required: true,
          maxlength: 280,
       },
       createdAt: {
