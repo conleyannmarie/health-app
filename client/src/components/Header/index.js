@@ -27,7 +27,7 @@ const Header = () => {
                         <Link to="/">{Auth.getProfile().data.username}</Link>
                     </span>
                     <span className="header-nav-link">
-                        <span className="devider">|</span>
+                        <span className="divider">|</span>
                     </span>
                     <span className="header-nav-link">
                         <a href="/login" onClick={logout}>

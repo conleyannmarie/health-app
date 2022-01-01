@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import { useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/react-hooks';
+// import { useMutation } from '@apollo/client';
 import {ADD_USER} from '../utils/mutations';
 import Auth from '../utils/auth';
+
+
 
 const Signup = () => {
    const [formState, setFormState] = useState({ username: '', email: '', password: '' });
@@ -36,48 +39,76 @@ const Signup = () => {
    };
 
    return (
-      <main className='flex-row justify-center mb-4'>
-         <div className='col-12 col-md-6'>
-            <div className='card'>
-               <h4 className='card-header'>Sign Up</h4>
-               <div className='card-body'>
-                  <form onSubmit={handleFormSubmit}>
-                     <input
-                        className='form-input'
-                        placeholder='Your username'
-                        name='username'
-                        type='username'
-                        id='username'
-                        value={formState.username}
-                        onChange={handleChange}
-                     />
-                     <input
-                        className='form-input'
-                        placeholder='Your email'
-                        name='email'
-                        type='email'
-                        id='email'
-                        value={formState.email}
-                        onChange={handleChange}
-                     />
-                     <input
-                        className='form-input'
-                        placeholder='******'
-                        name='password'
-                        type='password'
-                        id='password'
-                        value={formState.password}
-                        onChange={handleChange}
-                     />
-                     <button className='btn d-block w-100' type='submit'>
-                        Submit
-                     </button>
-                  </form>
+      <div className="card login-signup-card shadow-sm">
+        <div className="card-body">
+          <h4>Create Account</h4>
+          <hr></hr>
+          {error && (
+            <div className="alert alert-danger">
+              Something went wrong while signing up.
+            </div>
+          )}
+          <form onSubmit={handleFormSubmit} className="login-form">
+          <select id = "dropdown">
+             
+          <option value="N/A">User</option>
+          <option value="1">Patient</option>
+          <option value="2">Doctor</option>
+          </select>
+
+            <div className="row">
+              <div className="col-12 mb-3">
+                <label className="form-label">Username</label>
+                <input
+                  className="form-control"
+                  placeholder="Username"
+                  name="username"
+                  type="username"
+                  id="username"
+                  value={formState.username}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-12 mb-3">
+                <label className="form-label">Email</label>
+                <input
+                  className="form-control"
+                  placeholder="Email"
+                  name="email"
+                  type="email"
+                  id="email"
+                  value={formState.email}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-12 mb-3">
+                <label className="form-label">Password</label>
+                <input
+                  className="form-control"
+                  placeholder="Password"
+                  name="password"
+                  type="password"
+                  id="password"
+                  value={formState.password}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+            <button className="btn w-100 btn-default" type="submit">
+              Submit
+            </button>
+          </form>
+  
                   {error && <div>Sign up failed</div>}
                </div>
             </div>
-         </div>
-      </main>
+            
+      
+   
    );
 };
 
