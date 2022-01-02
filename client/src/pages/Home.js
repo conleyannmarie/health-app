@@ -17,20 +17,21 @@ const Home = () => {
         
          {/* //* homepage button need to link */}
          <button className='btn w-100 btn-home' type='submit'>
-             My Appointments
+         <i class="bi bi-calendar-event"></i>My Appointments
          </button>
          <button className='btn w-100 btn-home' type='submit'>
-            Make Appointments
+         <i class="bi bi-calendar-plus"></i> Make Appointments
          </button>
          <button className='btn w-100 btn btn-home' type='submit'>
-            Chat with Provider
+         <i class="bi bi-chat-left-dots"></i>Chat with Provider
          </button>
          <button className='btn w-100 btn-home' type='submit'>
-            Reviews
+         <i class="bi bi-clipboard-data"></i>Reviews
          </button>
-         <button className='btn w-100 btn-home' type='submit'>
-            Donate
+         <button  className='btn w-100 btn-home ' type='submit'>
+         <i class="bi bi-piggy-bank-fill"></i>Donate
          </button>
+         
          
          
       </main>
