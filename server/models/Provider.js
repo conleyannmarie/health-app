@@ -1,8 +1,7 @@
 const { Schema, model } = require('mongoose');
-const bcrypt = require('bcrypt');
-const Message = require('./Message');
+const replySchema = require('./Reply');
 
-const userSchema = new Schema(
+const providerSchema = new Schema(
    {
       username: {
          type: String,
@@ -21,28 +20,6 @@ const userSchema = new Schema(
          required: true,
          minlength: 5,
       },
-      isProvider: {
-         type: Boolean,
-         required: true,
-      },
-
-      specialty: {
-         type: String,
-         required: true,
-      },
-
-      npiNumber: {
-         type: String,
-         minlength: 10,
-         required: true,
-      },
-
-      messages: [
-         {
-            type: Schema.Types.ObjectId,
-            ref: 'Message',
-         },
-      ],
    },
    {
       toJSON: {
@@ -52,7 +29,7 @@ const userSchema = new Schema(
 );
 
 // set up pre-save middleware to create password
-userSchema.pre('save', async function (next) {
+providerSchema.pre('save', async function (next) {
    if (this.isNew || this.isModified('password')) {
       const saltRounds = 10;
       this.password = await bcrypt.hash(this.password, saltRounds);
@@ -62,10 +39,10 @@ userSchema.pre('save', async function (next) {
 });
 
 // compare the incoming password with the hashed password
-userSchema.methods.isCorrectPassword = async function (password) {
+providerSchema.methods.isCorrectPassword = async function (password) {
    return bcrypt.compare(password, this.password);
 };
 
-const User = model('User', userSchema);
+const Provider = model('Provider', providerSchema);
 
-module.exports = User;
+module.exports = Provider;

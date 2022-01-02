@@ -8,7 +8,7 @@ const { ApolloServer } = require('apollo-server-express');
 
 // import our typeDefs and resolvers
 const { typeDefs, resolvers } = require('./schemas');
-const db = require('./config/connections');
+const db = require('./config/connection');
 
 // import supposed middleware function...
 const { authMiddleware } = require('./utils/auth');
@@ -40,14 +40,15 @@ startServer();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+console.log('~This will remain undefined, until we move to production: process.env.NODE_ENV', process.env.NODE_ENV);
 //* Serve up static assets
 if (process.env.NODE_ENV === 'production') {
    app.use(express.static(path.join(__dirname, '../client/build')));
 }
 
-app.get('*', (req, res) => {
-   res.sendFile(path.join(__dirname, '../client/build/index.html'));
-});
+// app.get('*', (req, res) => {
+//    res.sendFile(path.join(__dirname, '../client/build/index.html'));
+// });
 
 db.once('open', () => {
    app.listen(PORT, () => {

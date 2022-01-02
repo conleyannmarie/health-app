@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
-import { useMutation } from '@apollo/react-hooks';
-// import { useMutation } from '@apollo/client';
-import {ADD_USER} from '../utils/mutations';
+import { useMutation } from '@apollo/client';
+import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 
 
 const Signup = () => {
-   const [formState, setFormState] = useState({ username: '', email: '', password: '' });
+   const [formState, setFormState] = useState({
+      username: '',
+      email: '',
+      password: '',
+      isProvider: false,
+      specialty: 'your specialty',
+      npiNumber: 'your 10 digit npi number',
+   });
 
    const [addUser, { error }] = useMutation(ADD_USER);
 
@@ -24,14 +30,15 @@ const Signup = () => {
    // submit form
    const handleFormSubmit = async (event) => {
       event.preventDefault();
-      console.log(formState);
-
+      console.log('inside handleFormSubmit');
       //use try/catch instead of promises to handle errors
       try {
          // execute addUser mutation and pass in variable data from form
+         console.log('file: Signup.js ~ line 34 ~ formState', formState);
          const { data } = await addUser({
             variables: { ...formState },
          });
+         console.log('file: Signup.js ~ line 38 ~ data', data);
          Auth.login(data.addUser.token); //* set token to localStorage and reload page to homepage
       } catch (e) {
          console.error(e);

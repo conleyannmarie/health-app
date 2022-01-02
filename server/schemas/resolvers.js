@@ -1,5 +1,5 @@
 // Import Thought & Users
-const { User, Thought } = require('../models');
+const { User, Message, Appointment } = require('../models');
 
 // Import Authentication handling
 const { AuthenticationError } = require('apollo-server-express');
@@ -14,8 +14,8 @@ const resolvers = {
          if (context.user) {
             const userData = await User.findOne({ _id: context.user._id }) //
                .select('-__v -password')
-               .populate('thoughts') //
-               .populate('friends');
+               .populate('messages') //
+               .populate('providers');
 
             return userData;
          }
@@ -23,28 +23,28 @@ const resolvers = {
          throw new AuthenticationError('Not logged in');
       },
 
-      thoughts: async (parent, { username }) => {
-         const params = username ? { username } : {};
-         return Thought.find(params).sort({ createdAt: -1 });
-      },
-      thought: async (parent, { _id }) => {
-         return Thought.findOne({ _id });
-      },
-
       // Get all users
       users: async () => {
          return User.find() //
             .select('-__v -password')
-            .populate('friends')
-            .populate('thoughts');
+            .populate('providers')
+            .populate('messages');
       },
 
       // Get a User by username
       user: async (parent, { username }) => {
          return User.findOne({ username }) //
             .select('-__v -password')
-            .populate('friends')
-            .populate('thoughts');
+            .populate('providers')
+            .populate('messages');
+      },
+
+      messages: async (parent, { username }) => {
+         const params = username ? { username } : {};
+         return Message.find(params).sort({ createdAt: -1 });
+      },
+      message: async (parent, { _id }) => {
+         return Message.findOne({ _id });
       },
    },
    Mutation: {
@@ -52,49 +52,53 @@ const resolvers = {
          const user = await User.create(args);
          const token = signToken(user);
 
+         console.log('file: resolvers.js ~ line 55 ~ args', args);
+         console.log('file: resolvers.js ~ line 56 ~ user', user);
+         console.log('file: resolvers.js ~ line 57 ~ token', token);
+
          return { token, user };
       },
 
-      addThought: async (parent, args, context) => {
+      addMessage: async (parent, args, context) => {
          if (context.user) {
             // const thought = await Thought.create({ ...astFromValue, username: context.user.username });
-            const thought = await Thought.create({ ...args, username: context.user.username });
+            const message = await Message.create({ ...args, username: context.user.username });
 
             await User.findByIdAndUpdate(
                { _id: context.user._id },
-               { $push: { thoughts: thought._id } },
+               { $push: { messages: message._id } },
                //! Without this flag, Mongo would return the original document instead
                //! of updated document.
                { new: true }
             );
 
-            return thought;
+            return message;
          }
 
          throw new AuthenticationError('You need to be logged in!');
       },
 
-      addReaction: async (parent, { thoughtId, reactionBody }, context) => {
+      addReply: async (parent, { messageId, replyBody }, context) => {
          if (context.user) {
-            const updatedThought = await Thought.findOneAndUpdate(
-               { _id: thoughtId },
-               { $push: { reactions: { reactionBody, username: context.user.username } } },
+            const updatedMessage = await Message.findOneAndUpdate(
+               { _id: messageId },
+               { $push: { replys: { replyBody, username: context.user.username } } },
                { new: true, runValidators: true }
             );
 
-            return updatedThought;
+            return updatedMessage;
          }
 
          throw new AuthenticationError('You need to be logged in!');
       },
 
-      addFriend: async (parent, { friendId }, context) => {
+      addProvider: async (parent, { providerId }, context) => {
          if (context.user) {
             const updatedUser = await User.findOneAndUpdate(
                { _id: context.user._id },
-               { $addToSet: { friends: friendId } },
+               { $addToSet: { providers: providerId } },
                { new: true }
-            ).populate('friends');
+            ).populate('providers');
 
             return updatedUser;
          }
