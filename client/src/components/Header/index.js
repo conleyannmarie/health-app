@@ -3,21 +3,21 @@ import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 
 const Header = () => {
+   // Logout event handler
    const logout = (event) => {
       event.preventDefault();
       Auth.logout();
    };
-   return (
-      <header className='bg-secondary mb-4 py-2 flex-row align-center'>
-         <div className='container flex-row justify-space-between-lg justify-center align-center'>
-            <Link to='/'>
-               <h1>Deep Thoughts</h1>
-            </Link>
+
+   console.log('Inside Header');
+    return (
+             <header>
+         <div >
 
             <nav className='text-center'>
                {Auth.loggedIn() ? (
                   <>
-                     <Link to='/profile'>Me</Link>
+                     <Link to='/'>Health-App</Link>
                      <a href='/' onClick={logout}>
                         Logout
                      </a>
@@ -31,6 +31,8 @@ const Header = () => {
             </nav>
          </div>
       </header>
+        
+    
    );
 };
 

@@ -6,6 +6,7 @@ import Profile from './pages/Profile';
 import Signup from './pages/Signup';
 //import CreateAppt from './pages/CreateAppt';
 import { setContext } from '@apollo/client/link/context';
+import './App.css';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
