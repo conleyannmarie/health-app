@@ -8,6 +8,8 @@ const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 // const { astFromValue } = require('graphql');
 
+
+
 const resolvers = {
    Query: {
       me: async (parent, args, context) => {
@@ -39,6 +41,12 @@ const resolvers = {
             .populate('messages');
       },
 
+      // Get all providers by specialty
+      providers_by_spec: async (parent, { specialty }) => {
+         const params = specialty ? { specialty } : {};
+         return User.find(params).sort({ username: 1 });
+      },
+
       messages: async (parent, { username }) => {
          const params = username ? { username } : {};
          return Message.find(params).sort({ createdAt: -1 });
@@ -57,6 +65,24 @@ const resolvers = {
          console.log('file: resolvers.js ~ line 57 ~ token', token);
 
          return { token, user };
+      },
+
+      addAppointment: async (parent, args, context) => {
+         if (context.user) {
+            const appointment = await Appointment.create({ ...args, username: context.user.username });
+
+            await User.findByIdAndUpdate(
+               { _id: context.user._id },
+               { $push: { appointments: appointment._id } },
+               //! Without this flag, Mongo would return the original document instead
+               //! of updated document.
+               { new: true }
+            );
+
+            return appointment;
+         }
+
+         throw new AuthenticationError('You need to be logged in!');
       },
 
       addMessage: async (parent, args, context) => {

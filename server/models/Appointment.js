@@ -14,8 +14,12 @@ const apptSchema = new Schema(
       },
 
       apptWith: {
-         type: Schema.Types.ObjectId,
-         ref: 'User',
+         type: String,
+         required: true,
+      },
+
+      username: {
+         type: String,
          required: true,
       },
 
