@@ -1,8 +1,8 @@
 import React from 'react';
-import { useQuery } from '@apollo/client';
+//import { useQuery } from '@apollo/client';
 import Auth from '../utils/auth';
-import Login from './Login';
-import Button from 'react-bootstrap/Button';
+//import Login from './Login';
+//import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Home = () => {
@@ -31,6 +31,7 @@ const Home = () => {
                   </button>
                </div>
             )}
+
          </div>
       </main>
    );

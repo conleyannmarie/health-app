@@ -18,9 +18,6 @@ const Signup = () => {
    // update state based on form input changes
    const handleChange = (event) => {
       const { name, value } = event.target;
-      console.log('file: Signup.js ~ line 21 ~ event.target', event.target);
-      console.log('file: Signup.js ~ line 22 ~ name', name);
-      console.log('file: Signup.js ~ line 23 ~ value', value);
 
       setFormState({
          ...formState,
@@ -31,9 +28,6 @@ const Signup = () => {
    const handleCheckChange = (event) => {
       let { name, value } = event.target;
       value = event.target.checked;
-      console.log('file: Signup.js ~ line 34 ~ event.target', event.target);
-      console.log('file: Signup.js ~ line 35 ~ name', name);
-      console.log('file: Signup.js ~ line 36 ~ value', value);
 
       setFormState({
          ...formState,
@@ -44,15 +38,12 @@ const Signup = () => {
    // submit form
    const handleFormSubmit = async (event) => {
       event.preventDefault();
-      console.log('inside handleFormSubmit');
       //use try/catch instead of promises to handle errors
       try {
          // execute addUser mutation and pass in variable data from form
-         console.log('file: Signup.js ~ line 34 ~ formState', formState);
          const { data } = await addUser({
             variables: { ...formState },
          });
-         console.log('file: Signup.js ~ line 38 ~ data', data);
          Auth.login(data.addUser.token); //* set token to localStorage and reload page to homepage
       } catch (e) {
          console.error(e);
