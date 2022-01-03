@@ -36,6 +36,19 @@ export const QUERY_THOUGHT = gql`
    }
 `;
 
+export const QUERY_PROVIDERS_BY_SPEC = gql`
+   query providers_by_spec($specialty: String!) {
+      providers_by_spec(specialty: $specialty) {
+         _id
+         username
+         email
+         isProvider
+         specialty
+         npiNumber
+      }
+   }
+`;
+
 export const QUERY_USER = gql`
    query user($username: String!) {
       user(username: $username) {

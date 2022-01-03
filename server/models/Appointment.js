@@ -9,18 +9,23 @@ const apptSchema = new Schema(
       },
 
       apptTime: {
-         type: String,
+         type: Date,
          required: true,
       },
 
       apptWith: {
-         type: Schema.Types.ObjectId,
-         ref: 'User',
+         type: String,
+         required: true,
+      },
+
+      username: {
+         type: String,
          required: true,
       },
 
       confirmed: {
          type: Boolean,
+         required: true,
       },
    },
    {

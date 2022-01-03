@@ -1,6 +1,7 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 const Message = require('./Message');
+const Appointment = require('./Appointment');
 
 const userSchema = new Schema(
    {
@@ -21,6 +22,27 @@ const userSchema = new Schema(
          required: true,
          minlength: 5,
       },
+      
+      isProvider: {
+         type: Boolean,
+      },
+
+      specialty: {
+         type: String,
+      },
+
+      npiNumber: {
+         type: String,
+         minlength: 10,
+      },
+
+      appointments: [
+         {
+            type: Schema.Types.ObjectId,
+            ref: 'Appointment',
+         },
+      ],
+
       messages: [
          {
             type: Schema.Types.ObjectId,

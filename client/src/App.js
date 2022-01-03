@@ -4,7 +4,9 @@ import NoMatch from './pages/NoMatch';
 import SingleThought from './pages/SingleThought';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
+//import CreateAppt from './pages/CreateAppt';
 import { setContext } from '@apollo/client/link/context';
+import './App.css';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -58,6 +60,7 @@ function App() {
                <Header />
                <div className='container'>
                   <Switch>
+                     {/* <Route exact path='/createAppt' component={CreateAppt} /> */}
                      <Route exact path='/' component={Home} />
                      <Route exact path='/login' component={Login} />
                      <Route exact path='/signup' component={Signup} />

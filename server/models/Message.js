@@ -6,7 +6,7 @@ const messageSchema = new Schema(
    {
       messageText: {
          type: String,
-         required: true,
+         required: false,
          maxlength: 280,
       },
       createdAt: {

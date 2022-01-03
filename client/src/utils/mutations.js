@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client';
+const { Date, Time } = require('graphql-scalars');
 
 export const LOGIN_USER = gql`
    mutation login($email: String!, $password: String!) {
@@ -17,9 +18,9 @@ export const ADD_USER = gql`
       $username: String!
       $email: String!
       $password: String!
-      $isProvider: Boolean!
-      $specialty: String!
-      $npiNumber: String!
+      $isProvider: Boolean
+      $specialty: String
+      $npiNumber: String
    ) {
       addUser(
          username: $username
@@ -37,6 +38,27 @@ export const ADD_USER = gql`
       }
    }
 `;
+
+export const ADD_APPT = [
+   Date,
+   Time,
+   gql`
+      mutation addAppt(
+         $apptDate: Date!, 
+         $apptTime: Time!, 
+         $apptWith: User!, 
+         $confirmed: Boolean!, 
+         $username: String!) {
+         addAppt(
+            apptDate: $apptDate
+            apptTime: $apptTime
+            apptWith: $apptWith
+            confirmed: $confirmed
+            username: $username
+         )
+      }
+   `,
+];
 
 export const ADD_FRIEND = gql`
    mutation addFriend($id: ID!) {
