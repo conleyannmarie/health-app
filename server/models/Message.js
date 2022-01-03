@@ -19,7 +19,7 @@ const messageSchema = new Schema(
          required: true,
       },
       
-      replies: [replySchema]
+      // replies: [replySchema]
    },
    {
       toJSON: {
