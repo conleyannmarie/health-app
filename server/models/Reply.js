@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 const { Schema } = require("mongoose");
 const dateFormat = require("../utils/dateFormat");
-=======
-const { Schema } = require('mongoose');
-const dateFormat = require('../utils/dateFormat');
->>>>>>> 9d7dd1b7301dd983e844ebed1a517a0c8a825aa6
 
 const replySchema = new Schema(
   {

@@ -4,7 +4,9 @@ import NoMatch from './pages/NoMatch';
 import SingleThought from './pages/SingleThought';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
+//import CreateAppt from './pages/CreateAppt';
 import { setContext } from '@apollo/client/link/context';
+import './App.css';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -15,13 +17,13 @@ import Footer from './components/Footer';
 
 import Home from './pages/Home';
 
-// const httpLink = createHttpLink({
-//    uri: 'http://localhost:3001/graphql',
-// });
-
 const httpLink = createHttpLink({
-   uri: '/graphql',
+   uri: 'http://localhost:3001/graphql',
 });
+
+// const httpLink = createHttpLink({
+//    uri: '/graphql',
+// });
 
 //* With the configuration of authLink, we use the setContext() function to retrieve the token from localStorage and
 //* set the HTTP request headers of every request to include the token, whether the request needs it or not. This is
@@ -58,6 +60,7 @@ function App() {
                <Header />
                <div className='container'>
                   <Switch>
+                     {/* <Route exact path='/createAppt' component={CreateAppt} /> */}
                      <Route exact path='/' component={Home} />
                      <Route exact path='/login' component={Login} />
                      <Route exact path='/signup' component={Signup} />

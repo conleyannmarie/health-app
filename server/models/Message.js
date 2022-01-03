@@ -1,5 +1,4 @@
 const { Schema, model } = require('mongoose');
-const replySchema = require('./Reply')
 const dateFormat = require('../utils/dateFormat');
 
 const messageSchema = new Schema(
@@ -18,7 +17,6 @@ const messageSchema = new Schema(
          default: Date.now,
          get: (timestamp) => dateFormat(timestamp),
       },
-      replies: [replySchema]
    },
    {
       toJSON: {
@@ -27,10 +25,6 @@ const messageSchema = new Schema(
    }
 );
 
-messageSchema.virtual('replyCount').get(function() {
-   return this.replies.length;
- });
- 
- const Message = model('Message', messageSchema);
- 
- module.exports = Message;
+const Message = model('Message', messageSchema);
+
+module.exports = Message;

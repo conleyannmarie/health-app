@@ -36,7 +36,7 @@ db.once('open', async () => {
   }
 
   // create messages
-  let createdMessages = [];
+  let createdMessage = [];
   for (let i = 0; i < 100; i += 1) {
     const messageText = faker.lorem.words(Math.round(Math.random() * 20) + 1);
 
