@@ -4,6 +4,7 @@ import NoMatch from './pages/NoMatch';
 import SingleThought from './pages/SingleThought';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
+import Messages from './pages/Messages';
 import { setContext } from '@apollo/client/link/context';
 import './App.css';
 
@@ -15,6 +16,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 
 import Home from './pages/Home';
+
 
 const httpLink = createHttpLink({
    uri: 'http://localhost:3001/graphql',
@@ -64,6 +66,8 @@ function App() {
                      <Route exact path='/signup' component={Signup} />
                      <Route exact path='/profile/:username?' component={Profile} />
                      <Route exact path='/thought/:id' component={SingleThought} />
+                     <Route exact path='/messages' component={Messages} />
+
 
                      <Route component={NoMatch} />
                   </Switch>

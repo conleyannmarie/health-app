@@ -267,6 +267,10 @@ footer {
   color: #FFFFFF !important;
   margin: 20px 0;
   height: 60px ;
-  
 
+}
+
+.flex-container-button{
+  display: flex ;
+  flex-direction: row;
 }
