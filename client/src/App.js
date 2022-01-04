@@ -4,6 +4,7 @@ import NoMatch from './pages/NoMatch';
 import SingleThought from './pages/SingleThought';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
+import ScheduleAppt from './pages/ScheduleAppt';
 //import CreateAppt from './pages/CreateAppt';
 import { setContext } from '@apollo/client/link/context';
 import './App.css';
@@ -66,6 +67,7 @@ function App() {
                      <Route exact path='/signup' component={Signup} />
                      <Route exact path='/profile/:username?' component={Profile} />
                      <Route exact path='/thought/:id' component={SingleThought} />
+                     <Route exact path='/scheduleappt' component={ScheduleAppt} />
 
                      <Route component={NoMatch} />
                   </Switch>
