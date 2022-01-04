@@ -14,6 +14,7 @@ import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@ap
 
 import Header from './components/Header';
 import Footer from './components/Footer';
+import SelectDate from './components/SelectDate';
 
 import Home from './pages/Home';
 
@@ -66,6 +67,7 @@ function App() {
                      <Route exact path='/signup' component={Signup} />
                      <Route exact path='/profile/:username?' component={Profile} />
                      <Route exact path='/thought/:id' component={SingleThought} />
+                     <Route exact path='/datepicker' component={SelectDate} />
 
                      <Route component={NoMatch} />
                   </Switch>
