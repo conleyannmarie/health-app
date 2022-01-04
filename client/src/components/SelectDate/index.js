@@ -9,6 +9,8 @@ const SelectDate = (props) => {
       specialty: props.specialty,
    });
 
+   setSelectDateState = { ...selectDateState, [date]: value };
+
    const handleCalendarClose = () => console.log('Calendar closed');
    const handleCalendarOpen = () => console.log('Calendar opened');
 
@@ -19,11 +21,14 @@ const SelectDate = (props) => {
                <p>
                   Provider<span>{selectDateState.provider}</span>
                </p>
+               <p>
+                  Specialty<span>{selectDateState.specialty}</span>
+               </p>
             </div>
             <div>
                <DatePicker
-                  selected={date}
-                  onChange={(date) => setDate(date)}
+                  selected={selectDateState.date}
+                  onChange={(date) => setSelectDateState(date)}
                   onCalendarClose={handleCalendarClose}
                   onCalendarOpen={handleCalendarOpen}
                />
