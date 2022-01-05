@@ -49,6 +49,32 @@ export const QUERY_PROVIDERS_BY_SPEC = gql`
    }
 `;
 
+export const QUERY_GET_APPT = gql`
+   query getAppointments($username: String!) {
+      getAppointments(username: $username) {
+         _id
+         username
+         apptDate
+         apptTime
+         apptWith
+         confirmed
+      }
+   }
+`;
+
+export const QUERY_GET_APPT_PROVIDER = gql`
+   query getApptsProvider($apptWith: String!) {
+      getApptsProvider(apptWith: $apptWith) {
+         _id
+         username
+         apptDate
+         apptTime
+         apptWith
+         confirmed
+      }
+   }
+`;
+
 export const QUERY_USER = gql`
    query user($username: String!) {
       user(username: $username) {

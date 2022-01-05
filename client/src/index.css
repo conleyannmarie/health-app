@@ -71,6 +71,15 @@ footer {
    background-color: var(--primary-color) !important;
 }
 
+.form-label {
+   margin-right: 10px;
+}
+
+.form-checkbox {
+   width: 20px;
+   height: 20px;
+}
+
 .page-container {
    position: relative;
    min-height: 100vh;

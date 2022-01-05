@@ -8,8 +8,6 @@ const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 // const { astFromValue } = require('graphql');
 
-
-
 const resolvers = {
    Query: {
       me: async (parent, args, context) => {
@@ -41,16 +39,25 @@ const resolvers = {
             .populate('messages');
       },
 
-      // Get all providers by specialty
+      //* Get all providers by specialty
       providers_by_spec: async (parent, { specialty }) => {
          const params = specialty ? { specialty } : {};
          return User.find(params).sort({ username: 1 });
       },
 
+      //* Get all appointments by username and date
+      getAppointments: async (parent, { username }) => {
+         return Appointment.find({ username: username }).sort({ date: 1 });
+      },
+
+      //* Get all appointments by provider
+      getApptsProvider: async (parent, { apptWith }) => {
+         return Appointment.find({ apptWith: apptWith }).sort({ date: 1 });
+      },
+
       messages: async (parent, { username }) => {
          const params = username ? { username } : {};
          return Message.find(params).sort({ createdAt: -1 });
-         
       },
       message: async (parent, { _id }) => {
          return Message.findOne({ _id });
@@ -60,10 +67,6 @@ const resolvers = {
       addUser: async (parent, args) => {
          const user = await User.create(args);
          const token = signToken(user);
-
-         console.log('file: resolvers.js ~ line 55 ~ args', args);
-         console.log('file: resolvers.js ~ line 56 ~ user', user);
-         console.log('file: resolvers.js ~ line 57 ~ token', token);
 
          return { token, user };
       },

@@ -33,7 +33,6 @@ const userSchema = new Schema(
 
       npiNumber: {
          type: String,
-         minlength: 10,
       },
 
       appointments: [

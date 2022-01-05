@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client';
-const { Date, Time } = require('graphql-scalars');
+const { Date } = require('graphql-scalars');
 
 export const LOGIN_USER = gql`
    mutation login($email: String!, $password: String!) {
@@ -41,20 +41,20 @@ export const ADD_USER = gql`
 
 export const ADD_APPT = [
    Date,
-   Time,
    gql`
       mutation addAppt(
-         $apptDate: Date!, 
-         $apptTime: Time!, 
-         $apptWith: User!, 
-         $confirmed: Boolean!, 
-         $username: String!) {
+         $username: String!
+         $apptDate: Date!
+         $apptTime: String!
+         $apptWith: User!
+         $confirmed: Boolean!
+      ) {
          addAppt(
+            username: $username
             apptDate: $apptDate
             apptTime: $apptTime
             apptWith: $apptWith
             confirmed: $confirmed
-            username: $username
          )
       }
    `,

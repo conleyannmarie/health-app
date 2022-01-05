@@ -21,7 +21,7 @@ const Home = () => {
                   <button className='btn w-100 btn-home' type='submit'>
                      <i className='bi bi-calendar-plus'></i> Make Appointments
                      <p>
-                        <Link to='/datepicker'>Pick a Date</Link> instead
+                        <Link to='/selectdate'>Select Date</Link>
                      </p>
                   </button>
                   <button className='btn w-100 btn btn-home' type='submit'>
