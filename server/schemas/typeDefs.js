@@ -49,7 +49,7 @@ const typeDefs = gql`
       user(username: String!): User
       messages(username: String): [Message]
       message(_id: ID!): Message
-      providers_by_spec(specialty: String!): [User]
+      providers_by_spec(specialty: String): [User]
       provider(username: String!, isProvider: Boolean!, specialty: String!): User
    }
 

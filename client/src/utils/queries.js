@@ -37,7 +37,7 @@ export const QUERY_THOUGHT = gql`
 `;
 
 export const QUERY_PROVIDERS_BY_SPEC = gql`
-   query providers_by_spec($specialty: String!) {
+   query providers_by_spec($specialty: String) {
       providers_by_spec(specialty: $specialty) {
          _id
          username
@@ -48,6 +48,15 @@ export const QUERY_PROVIDERS_BY_SPEC = gql`
       }
    }
 `;
+
+// Query specialties
+export const QUERY_GET_SPEC = gql`
+query Providers_by_spec {
+   providers_by_spec {
+     specialty
+   }
+ }`
+//doctors in tables
 
 export const QUERY_USER = gql`
    query user($username: String!) {
