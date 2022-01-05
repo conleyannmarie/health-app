@@ -9,28 +9,37 @@ const Header = () => {
       Auth.logout();
    };
 
-   console.log('Inside Header');
-    return (
-             <header>
-         <div >
+   return (
+      <header>
+          <h5>
+              {Auth.loggedIn() ? 
+                  <Link to="../">Health-App</Link>
+              :
+                  <Link to="/login">Health-App</Link>
+              }
+          </h5>
 
-            <nav className='text-center'>
-               {Auth.loggedIn() ? (
-                  <>
-                     <Link to='/'>Health-App</Link>
-                     <a href='/' onClick={logout}>
-                        Logout
-                     </a>
-                  </>
-               ) : (
-                  <>
-                     <Link to='/login'>Login</Link>
-                     <Link to='/signup'>Signup</Link>
-                  </>
-               )}
-            </nav>
-         </div>
+         <nav>
+             {Auth.loggedIn() && 
+              <>
+              <span className="header-nav-link">
+                        <span>{Auth.getProfile().data.username}</span>
+                    </span>
+                    <span className="header-nav-link">
+                        <span>|</span>
+                    </span>
+                    <span className="header-nav-link"></span>
+              
+                      <a href="/login" onClick={logout}>
+                          Logout
+                      </a>
+                  
+              </>
+             }
+         </nav>
+          
       </header>
+      
         
     
    );
