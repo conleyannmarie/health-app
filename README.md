@@ -13,7 +13,7 @@ We connect patients to Doctors in a stress-free way.
 
 ## Motivation
 
-One of the collaborators Jose works in the health industry and noticed that it's hard to get a hold of a doctor directly and schedule an appointment. As a group we want to see what we could do to eliminate that.
+One of the collaborators Jose works in the medical field and noticed that it's hard to get a hold of a doctor directly and schedule an appointment. As a group we want to see what we could do to eliminate that.
 
 ## Tools Used
 
