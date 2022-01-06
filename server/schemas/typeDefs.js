@@ -1,9 +1,11 @@
 // import the gql tagged template function
 const { gql } = require('apollo-server-express');
-//const { Date } = require('graphql-scalars');
+const { Date } = require('graphql-scalars');
 
 // create our typeDefs
 const typeDefs = gql`
+   scalar Date
+
    type Message {
       _id: ID
       messageText: String
