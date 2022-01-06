@@ -1,18 +1,24 @@
 import React, { useState } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
+import { QUERY_GET_APPT_PROVIDER } from '../../utils/queries';
+
+import dateFormat from '../../utils/dateOnlyFormat';
+import Button from 'react-bootstrap/Button';
+
 import { Redirect, useParams } from 'react-router-dom';
 import { ADD_APPT } from '../../utils/mutations';
-import { QUERY_GET_APPT_PROVIDER } from '../../utils/queries';
 import Auth from '../../utils/auth';
 
 const TimeAvailable = (props) => {
    const provider = props.match.params.provider;
    const specialty = props.match.params.specialty;
-   const date = props.match.params.date;
+   const date = dateFormat(props.match.params.date);
+
    const [timeState, setTimeState] = useState({
       provider: provider,
       specialty: specialty,
       date: date,
+      availableSlots: null,
    });
 
    const timeSlots = ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'];
@@ -21,11 +27,24 @@ const TimeAvailable = (props) => {
       variables: { apptWith: provider },
    });
 
-   console.log('file: TimeAvailability.index.js ~ line 24 ~ data', data);
-   // const apptSlots = timeSlots.map(elem =>
-   // {
+   let availableSlots = [];
+   if (data) {
+      const filteredSlots = timeSlots.map((availableSlot) => {
+         if (
+            data.getApptsProvider.find((elem) => {
+               return elem.apptTime === availableSlot;
+            })
+         ) {
+            return null;
+         }
+         return availableSlot;
+      });
 
-   // });
+      //* availableSlots to display
+      availableSlots = filteredSlots.filter((elem) => {
+         return elem !== null;
+      });
+   }
    // //update state based on form input changes
    // const handleChange = (event) => {
    //    const { name, value } = event.target;
@@ -71,6 +90,12 @@ const TimeAvailable = (props) => {
             <p>{timeState.provider}</p>
             <p>{timeState.specialty}</p>
             <p>{timeState.date}</p>
+
+            {availableSlots.map((availableSlot) => (
+               <Button variant='outline-primary' key={availableSlot}>
+                  {availableSlot}
+               </Button>
+            ))}
 
             {/* {error && <div className='alert alert-danger'>Something went wrong while creating an Appt.</div>} */}
          </div>
