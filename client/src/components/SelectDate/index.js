@@ -45,7 +45,7 @@ const SelectDate = (props) => {
                // to={`/timeavailable/?${selectDateState.provider}/?${selectDateState.specialty}/?${selectDateState.date}`}
                to={`/timeavailable/${selectDateState.provider}/${selectDateState.specialty}/${selectDateState.date}`}
             >
-               Check availability
+               <button className='btn btn-add'>Check availability</button>
             </Link>
          </div>
       </div>

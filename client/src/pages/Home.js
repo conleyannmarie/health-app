@@ -15,20 +15,21 @@ const Home = () => {
             {/* homepage button need to link */}
             {loggedIn && (
                <div>
-                  <a className='btn w-100 btn-home' href='# ' role='button'>
-                     <i className=' bi bi-calendar-event'></i> My Appointments
+                  <a className='btn w-100 btn-home ' href='# ' role='button'>
+                     <i className=' bi bi-calendar-event fs-1 me-3'></i> My Appointments
                   </a>
-                  <a className='btn w-100 btn-home' href='/selectDate' role='button'>
-                     <i className='bi bi-calendar-plus me-5'></i> Make Appointments
+                  <a className='btn w-100 btn-home ' href='/selectDate' role='button'>
+                     <i className=' bi bi-calendar-plus fs-1 me-3'></i> Make Appointments
                   </a>
-                  <a className='btn w-100 btn btn-home' href='#' role='button'>
-                     <i className='d-flex  bi bi-chat-left-dots me-5'></i>Message
-                  </a>
-                  <a className='btn w-100 btn-home' href='#' role='button'>
-                     <i className='d-flex bi bi-clipboard-data me-5'></i> <span className='ps-5 '>Reviews</span>
+                  <a className='btn w-100 btn btn-home ' href='#' role='button'>
+                     <i className=' bi bi-chat-left-dots fs-1 me-3'></i>Message
                   </a>
                   <a className='btn w-100 btn-home ' href='#' role='button'>
-                     <i className='bi bi-wallet2 me-5'></i>Donate
+                     <i className=' bi bi-clipboard-data fs-1 me-3 '></i>  Reviews
+      
+                  </a>
+                  <a className=' btn w-100 btn-home ' href='#' role='button'>
+                     <i className='  text-left bi bi-wallet2 fs-1 me-3 '></i> Donate
                   </a>
                </div>
             )}
