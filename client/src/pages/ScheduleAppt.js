@@ -35,41 +35,37 @@ const ScheduleAppt = (props) => {
           </Dropdown.Toggle>
 
           <Dropdown.Menu className='specialtyList'>
-          <ul className="specialties">{specialties.length > 0 && specialties.map(specialty => <Link to = {`?specialty=${specialty}`} key={specialty}>{specialty}</Link>)}</ul>
+          {specialties.length > 0 && specialties.map(specialty => <ul> <Link to = {`?specialty=${specialty}`} key={specialty}>{specialty}</Link></ul>)} 
+          
           </Dropdown.Menu>
         </Dropdown>
 
-        {/* <div className="container">
-  <button type="button" class="button" onClick={this.handleButtonClick}>
-    ☰
-  </button>
-  {this.state.open && (
-    <div class="dropdown">
-      <ul>
-        <li>{specialties.length > 0 && specialties.map(specialty => <Link to = {`?specialty=${specialty}`} key={specialty}>{specialty}</Link>)}</li>
-      </ul>
-    </div>
-  )}
-</div> */}
+        {/* <ul className="providerList">
+          {providers.length > 0 && providers.map(provider => <li className="providers"><Link to = {`?provider=${provider._id}`} key={provider._id}>{provider.username}</Link></li>)}
+        </ul> */}
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Specialty</th>
+              <th>Link</th>
+            </tr>
+          </thead>
+          <tbody>
+          {providers.length > 0 && providers.map(provider => 
 
-        {/* <ProviderTable columns={columns} info={info} /> */}
-
-        <ul className="providerList">
-          <li className="providers">{providers.length > 0 && providers.map(provider => <Link to = {`?provider=${provider._id}`} key={provider._id}>{provider.username}</Link>)}</li>
-        </ul>
-
-        {/* <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic">
-            Provider
-          </Dropdown.Toggle>
-
-          <Dropdown.Menu>
-            {providers.length > 0 && providers.map(provider => <Link to = {`?provider=${provider._id}`} key={provider._id}>{provider.username}</Link>)}
-          </Dropdown.Menu>
-        </Dropdown> */}
+            <tr>
+              <td>{provider.username}</td>
+              <td>{provider.specialty}</td>
+              <td><Link to={`/providers?id=${provider._id}`}>Set an Appointment</Link></td>
+            </tr>
+          )}
+          </tbody>
+        </table>
       </div>
     </main>
   );
 };
 
 export default ScheduleAppt;
+

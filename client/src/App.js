@@ -6,6 +6,7 @@ import Profile from './pages/Profile';
 import Signup from './pages/Signup';
 import ScheduleAppt from './pages/ScheduleAppt';
 import Messages from './pages/Messages';
+import Providers from './pages/Providers';
 //import CreateAppt from './pages/CreateAppt';
 import { setContext } from '@apollo/client/link/context';
 import './App.css';
@@ -72,6 +73,7 @@ function App() {
                      <Route exact path='/scheduleappt' component={ScheduleAppt} />
                      <Route exact path='/datepicker' component={SelectDate} />
                      <Route exact path='/messages' component={Messages}/>
+                     <Route exact path='/providers' component={Providers}/>
 
                      <Route component={NoMatch} />
                   </Switch>

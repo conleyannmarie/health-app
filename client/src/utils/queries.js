@@ -79,6 +79,19 @@ export const QUERY_USER = gql`
    }
 `;
 
+export const QUERY_USER_BY_ID = gql`
+   query userById($id: ID!) {
+      userById(_id: $id) {
+         _id
+         username
+         email
+         isProvider
+         specialty
+         npiNumber
+      }
+   }
+`;
+
 //! Because we aren't passing any variables to it, we can simply name the query, and GraphQL will handle the rest
 //* ALL user's data for his/her personal profile page
 export const QUERY_ME = gql`

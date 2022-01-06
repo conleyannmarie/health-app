@@ -41,6 +41,13 @@ const resolvers = {
             .populate('messages');
       },
 
+      userById: async (parent, { _id }) => {
+         return User.findOne({ _id }) //
+            .select('-__v -password')
+            .populate('providers')
+            .populate('messages');
+      },
+
       // Get all providers by specialty
       providers_by_spec: async (parent, { specialty }) => {
          const params = specialty ? { specialty } : {};
