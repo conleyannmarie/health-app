@@ -34,7 +34,8 @@ const SelectDate = (props) => {
                Specialty: <span>{selectDateState.specialty}</span>
             </p>
          </div>
-         <div className='create-appt'>
+         <span>Check availablity</span>
+         <div className='create-appt' style={{display: "flex", alignItems: "center" }}>
             <DatePicker
                selected={selectDateState.date}
                onChange={(selectedDate) => handleCalendarChange(selectedDate)}
@@ -44,7 +45,7 @@ const SelectDate = (props) => {
             <Link
                to={`/timeavailable/${selectDateState.provider}/${selectDateState.specialty}/${selectDateState.date}`}
             >
-               Check availability
+               <button className='btn btn-add'>submit</button>
             </Link>
          </div>
       </div>

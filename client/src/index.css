@@ -127,13 +127,7 @@ footer {
    padding-top: 30px;
 }
 
-.friend-card {
-   margin: 5px 5px 15px 5px;
-   border: none !important;
-}
-.friend-name {
-   font-size: 0.875em;
-}
+
 
 .profile-menu-item {
    margin-right: 25px;
@@ -194,6 +188,7 @@ footer {
 .btn-add {
    background-color: var(--primary-color) !important;
    color: #ffffff !important;
+   margin: 20px;
 }
 
 .primary-heading-bar {
@@ -269,6 +264,8 @@ footer {
    color: #ffffff !important;
    margin: 20px 0;
    height: 60px;
+   text-align: left !important;
+   
    
 
 }
