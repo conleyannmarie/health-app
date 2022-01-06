@@ -5,17 +5,15 @@ const apptSchema = new Schema(
    {
       apptDate: {
          type: Date,
-         required: true,
       },
 
       apptTime: {
-         type: Date,
+         type: String,
          required: true,
       },
 
       apptWith: {
          type: String,
-         required: true,
       },
 
       username: {

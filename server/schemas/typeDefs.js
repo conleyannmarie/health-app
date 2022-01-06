@@ -1,11 +1,10 @@
 // import the gql tagged template function
 const { gql } = require('apollo-server-express');
-const { Date, Time } = require('graphql-scalars');
+const { Date } = require('graphql-scalars');
 
 // create our typeDefs
 const typeDefs = gql`
    scalar Date
-   scalar Time
 
    type Message {
       _id: ID
@@ -31,7 +30,7 @@ const typeDefs = gql`
       _id: ID
       username: String
       apptDate: Date
-      apptTime: Time
+      apptTime: String
       apptWith: String
       confirmed: Boolean
    }
@@ -51,6 +50,8 @@ const typeDefs = gql`
       message(_id: ID!): Message
       providers_by_spec(specialty: String!): [User]
       provider(username: String!, isProvider: Boolean!, specialty: String!): User
+      getAppointments(username: String!): [Appointment]
+      getApptsProvider(apptWith: String!): [Appointment]
    }
 
    type Mutation {
@@ -63,7 +64,13 @@ const typeDefs = gql`
          specialty: String
          npiNumber: String
       ): Auth
-      addAppointment(apptDate: Date!, apptTime: Time!, apptWith: String!, confirmed: Boolean!): Appointment
+      addAppointment(
+         username: String!
+         apptDate: Date!
+         apptTime: String!
+         apptWith: String
+         confirmed: Boolean!
+      ): Appointment
       addMessage(messageText: String!): Message
       addReply(messageId: ID!, replyBody: String!): Message
       addProvider(providerId: ID!): User

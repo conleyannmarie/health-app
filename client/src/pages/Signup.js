@@ -103,7 +103,7 @@ const Signup = () => {
                   <div className='col-12 mb-3'>
                      <label className='form-label'>Check if you are a provider: </label>
                      <input
-                        className='form-input'
+                        className='form-checkbox'
                         placeholder='User Type'
                         name='isProvider'
                         type='checkbox'
