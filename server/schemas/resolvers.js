@@ -104,20 +104,6 @@ const resolvers = {
          throw new AuthenticationError('You need to be logged in!');
       },
 
-      addReply: async (parent, { messageId, replyBody }, context) => {
-         if (context.user) {
-            const updatedMessage = await Message.findOneAndUpdate(
-               { _id: messageId },
-               { $push: { replies: { replyBody, username: context.user.username } } },
-               { new: true, runValidators: true }
-            );
-
-            return updatedMessage;
-         }
-
-         throw new AuthenticationError('You need to be logged in!');
-      },
-
       addProvider: async (parent, { providerId }, context) => {
          if (context.user) {
             const updatedUser = await User.findOneAndUpdate(

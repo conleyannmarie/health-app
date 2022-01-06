@@ -11,8 +11,6 @@ const typeDefs = gql`
       messageText: String
       createdAt: String
       username: String
-      replyCount: Int
-      replies: [Reply]
    }
 
    type User {
@@ -33,13 +31,6 @@ const typeDefs = gql`
       apptTime: String
       apptWith: String
       confirmed: Boolean
-   }
-
-   type Reply {
-      _id: ID
-      replyBody: String
-      createdAt: String
-      username: String
    }
 
    type Query {
@@ -66,7 +57,6 @@ const typeDefs = gql`
       ): Auth
       addAppt(username: String, apptDate: Date!, apptTime: String!, apptWith: String, confirmed: Boolean!): Appointment
       addMessage(messageText: String!): Message
-      addReply(messageId: ID!, replyBody: String!): Message
       addProvider(providerId: ID!): User
    }
 

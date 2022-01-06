@@ -63,11 +63,11 @@ db.once('open', async () => {
     const randomMessageIndex = Math.floor(Math.random() * createdMessages.length);
     const { _id: messageId } = createdMessages[randomMessageIndex];
 
-    await Message.updateOne(
-      { _id: messageId },
-      { $push: { replies: { replyBody, username } } },
-      { runValidators: true }
-    );
+    // await Message.updateOne(
+    //   { _id: messageId },
+    //   { $push: { replies: { replyBody, username } } },
+    //   { runValidators: true }
+    // );
   }
 
   console.log('all done!');

@@ -1,6 +1,5 @@
 const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
-//const replySchema = require('../models/Reply')
 
 const messageSchema = new Schema(
    {
@@ -18,8 +17,6 @@ const messageSchema = new Schema(
          type: String,
          required: true,
       },
-      
-      // replies: [replySchema]
    },
    {
       toJSON: {
@@ -27,10 +24,6 @@ const messageSchema = new Schema(
       },
    }
 );
-
-messageSchema.virtual('replyCount').get(function() {
-   return this.replies.length;
-});
 
 const Message = model('Message', messageSchema);
 

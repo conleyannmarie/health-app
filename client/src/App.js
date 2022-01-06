@@ -1,31 +1,25 @@
 import React from 'react';
-import Login from './pages/Login';
-import NoMatch from './pages/NoMatch';
-import SingleThought from './pages/SingleThought';
-import Profile from './pages/Profile';
-import Signup from './pages/Signup';
-//import CreateAppt from './pages/CreateAppt';
 import { setContext } from '@apollo/client/link/context';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import './App.css';
 
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
-import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Home from './pages/Home';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
 import SelectDate from './components/SelectDate';
 import TimeAvailable from './components/TimeAvailable';
 
-import Home from './pages/Home';
+// const httpLink = createHttpLink({
+//    uri: 'http://localhost:3001/graphql',
+// });
 
 const httpLink = createHttpLink({
-   uri: 'http://localhost:3001/graphql',
+   uri: '/graphql',
 });
-
-// const httpLink = createHttpLink({
-//    uri: '/graphql',
-// });
 
 //* With the configuration of authLink, we use the setContext() function to retrieve the token from localStorage and
 //* set the HTTP request headers of every request to include the token, whether the request needs it or not. This is
@@ -66,12 +60,8 @@ function App() {
                      <Route exact path='/' component={Home} />
                      <Route exact path='/login' component={Login} />
                      <Route exact path='/signup' component={Signup} />
-                     <Route exact path='/profile/:username?' component={Profile} />
-                     <Route exact path='/thought/:id' component={SingleThought} />
                      <Route exact path='/selectdate' component={SelectDate} />
                      <Route exact path='/timeavailable/:provider/:specialty/:date' component={TimeAvailable} />
-
-                     <Route component={NoMatch} />
                   </Switch>
                </div>
                <Footer />
