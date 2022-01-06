@@ -3,8 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import Auth from "../utils/auth";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Dropdown from "react-bootstrap/Dropdown";
-import { QUERY_PROVIDERS_BY_SPEC, QUERY_ME, QUERY_GET_SPEC } from "../utils/queries";
-import { useMutation, useQuery } from "@apollo/client";
+import { QUERY_PROVIDERS_BY_SPEC, QUERY_GET_SPEC } from "../utils/queries";
+import { useQuery } from "@apollo/client";
 import { ADD_APPT } from "../utils/mutations";
 
 const ScheduleAppt = (props) => {
@@ -23,28 +23,50 @@ const ScheduleAppt = (props) => {
 
   useEffect (() => {console.log(parameters.get("specialty"))}, [parameters]);
 
+  
+
   return (
     <main>
       <h1>Schedule An Appointment</h1>
       <div>
         <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic">
+          <Dropdown.Toggle variant="primary" id="dropdown-basic">
             Specialty
           </Dropdown.Toggle>
 
-          <Dropdown.Menu>
-          {specialties.length > 0 && specialties.map(specialty => <Link to = {`?specialty=${specialty}`} key={specialty}>{specialty}</Link>)}
+          <Dropdown.Menu className='specialtyList'>
+          <ul className="specialties">{specialties.length > 0 && specialties.map(specialty => <Link to = {`?specialty=${specialty}`} key={specialty}>{specialty}</Link>)}</ul>
           </Dropdown.Menu>
         </Dropdown>
-        <Dropdown>
+
+        {/* <div className="container">
+  <button type="button" class="button" onClick={this.handleButtonClick}>
+    ☰
+  </button>
+  {this.state.open && (
+    <div class="dropdown">
+      <ul>
+        <li>{specialties.length > 0 && specialties.map(specialty => <Link to = {`?specialty=${specialty}`} key={specialty}>{specialty}</Link>)}</li>
+      </ul>
+    </div>
+  )}
+</div> */}
+
+        {/* <ProviderTable columns={columns} info={info} /> */}
+
+        <ul className="providerList">
+          <li className="providers">{providers.length > 0 && providers.map(provider => <Link to = {`?provider=${provider._id}`} key={provider._id}>{provider.username}</Link>)}</li>
+        </ul>
+
+        {/* <Dropdown>
           <Dropdown.Toggle variant="success" id="dropdown-basic">
             Provider
           </Dropdown.Toggle>
 
           <Dropdown.Menu>
-            {providers.length > 0 && providers.map(provider => <Dropdown.Item href={`?provider=${provider._id}`} key={provider._id}>{provider.username}</Dropdown.Item>)}
+            {providers.length > 0 && providers.map(provider => <Link to = {`?provider=${provider._id}`} key={provider._id}>{provider.username}</Link>)}
           </Dropdown.Menu>
-        </Dropdown>
+        </Dropdown> */}
       </div>
     </main>
   );
