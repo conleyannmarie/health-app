@@ -40,10 +40,12 @@ const ScheduleAppt = (props) => {
           </Dropdown.Menu>
         </Dropdown>
 
+        {/* type=date */}
+
         {/* <ul className="providerList">
           {providers.length > 0 && providers.map(provider => <li className="providers"><Link to = {`?provider=${provider._id}`} key={provider._id}>{provider.username}</Link></li>)}
         </ul> */}
-        <table>
+        <table class="table table-primary table-striped">
           <thead>
             <tr>
               <th>Name</th>
