@@ -71,21 +71,17 @@ const resolvers = {
          return { token, user };
       },
 
-      addAppointment: async (parent, args, context) => {
+      addAppt: async (parent, args, context) => {
+         console.log('file: resolvers.js ~ line 76 ~ args, context', args, context);
          if (context.user) {
             const appointment = await Appointment.create({ ...args, username: context.user.username });
-
             await User.findByIdAndUpdate(
                { _id: context.user._id },
                { $push: { appointments: appointment._id } },
-               //! Without this flag, Mongo would return the original document instead
-               //! of updated document.
                { new: true }
             );
-
             return appointment;
          }
-
          throw new AuthenticationError('You need to be logged in!');
       },
 

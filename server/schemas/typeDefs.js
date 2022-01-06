@@ -64,13 +64,7 @@ const typeDefs = gql`
          specialty: String
          npiNumber: String
       ): Auth
-      addAppointment(
-         username: String!
-         apptDate: Date!
-         apptTime: String!
-         apptWith: String
-         confirmed: Boolean!
-      ): Appointment
+      addAppt(username: String, apptDate: Date!, apptTime: String!, apptWith: String, confirmed: Boolean!): Appointment
       addMessage(messageText: String!): Message
       addReply(messageId: ID!, replyBody: String!): Message
       addProvider(providerId: ID!): User

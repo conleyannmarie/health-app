@@ -26,7 +26,8 @@ const TimeAvailable = (props) => {
       variables: { apptWith: provider, apptDate: date },
    });
 
-   // const [addAppointment, { error }] = useMutation(ADD_APPT);
+   const [addAppt, { error }] = useMutation(ADD_APPT);
+
    let availableSlots = [];
    if (data) {
       const filteredSlots = timeSlots.map((availableSlot) => {
@@ -46,53 +47,24 @@ const TimeAvailable = (props) => {
       });
    }
 
-   // const handleClick = (event) => {
-   //    const { name, value } = event.target;
-
-   //    setTimeState({
-   //       ...timeState,
-   //       [name]: value,
-   //    });
-   // };
-
-   // const handleCheckChange = (event) => {
-   //    let { name, value } = event.target;
-   //    value = event.target.checked;
-
-   //    setTimeState({
-   //       ...timeState,
-   //       [name]: value,
-   //    });
-   // };
-
-   // const handleClick = async () => {
-   //    try {
-   //       await addFriend({
-   //          variables: { id: user._id },
-   //       });
-   //    } catch (e) {
-   //       console.error(e);
-   //    }
-   // };
-
    // submit form
-   // const handleClick = async (timeState, availableSlot) => {
-   //    // event.preventDefault();
-   //    try {
-   //       // execute addAppointment mutation and pass in variable data from form
-   //       await addAppointment({
-   //          variables: {
-   //             apptDate: timeState.date,
-   //             apptTime: availableSlot,
-   //             apptWidth: timeState.provider,
-   //             confirmed: true,
-   //          },
-   //       });
-   //       Auth.login(data.addAppointment.token); //* set token to localStorage and reload page to homepage
-   //    } catch (e) {
-   //       console.error(e);
-   //    }
-   // };
+   const handleClick = async (timeState, availableSlot) => {
+      try {
+         console.log('file: index.js ~ line 54 ~ timeState, availableSlot', timeState, availableSlot);
+         const temp = await addAppt({
+            variables: {
+               apptDate: timeState.date,
+               apptTime: availableSlot,
+               apptWidth: timeState.provider,
+               confirmed: true,
+            },
+         });
+         console.log('file: index.js ~ line 62 ~ temp', temp);
+      } catch (e) {
+         console.log('catch error');
+         console.error(e);
+      }
+   };
 
    if (loading) {
       return <div>Loading...</div>;

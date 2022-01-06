@@ -15,7 +15,7 @@ const Home = () => {
             {/* homepage button need to link */}
             {loggedIn && (
                <div>
-                  <a className='btn w-100 btn-home' href='# ' role='button'>
+                  <a className='btn w-100 btn-home' href='/ ' role='button'>
                      <i className=' bi bi-calendar-event'></i> My Appointments
                   </a>
                   <a className='btn w-100 btn-home' href='/selectDate' role='button'>

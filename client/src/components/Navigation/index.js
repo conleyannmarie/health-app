@@ -5,7 +5,7 @@ const Navigation = () => {
       <nav className='navbar fixed-bottom navbar-expand-lg navbar-dark bg-primary'>
          <form className='container-fluid justify-content-evenly'>
             {/* Home tab */}
-            <a className='btn  btn-outline-light btn-lg' href='../' role='button'>
+            <a className='btn  btn-outline-light btn-lg' href='/' role='button'>
                {' '}
                <i className='bi bi-house'></i>
             </a>

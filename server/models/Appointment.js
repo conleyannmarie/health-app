@@ -18,7 +18,7 @@ const apptSchema = new Schema(
 
       username: {
          type: String,
-         required: true,
+
       },
 
       confirmed: {

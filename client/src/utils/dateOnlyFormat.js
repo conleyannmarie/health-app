@@ -18,7 +18,6 @@ const dateFormat = (apptDate) => {
 
    // const dateObj = apptDate;
    const dateObj = new Date(apptDate);
-   console.log('file: dateOnlyFormat.js ~ line 20 ~ apptDate', dateObj);
 
    const formattedMonth = months[dateObj.getMonth()];
 

@@ -39,26 +39,11 @@ export const ADD_USER = gql`
    }
 `;
 
-export const ADD_APPT = [
-   Date,
-   gql`
-      mutation addAppt(
-         $username: String!
-         $apptDate: Date!
-         $apptTime: String!
-         $apptWith: User!
-         $confirmed: Boolean!
-      ) {
-         addAppt(
-            username: $username
-            apptDate: $apptDate
-            apptTime: $apptTime
-            apptWith: $apptWith
-            confirmed: $confirmed
-         )
-      }
-   `,
-];
+export const ADD_APPT = gql`
+   mutation addAppt($username: String, $apptDate: Date!, $apptTime: String!, $apptWith: User!, $confirmed: Boolean!) {
+      addAppt(username: $username, apptDate: $apptDate, apptTime: $apptTime, apptWith: $apptWith, confirmed: $confirmed)
+   }
+`;
 
 export const ADD_FRIEND = gql`
    mutation addFriend($id: ID!) {
