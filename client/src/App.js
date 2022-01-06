@@ -6,6 +6,9 @@ import './App.css';
 
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import ScheduleAppt from './pages/ScheduleAppt';
+import Messages from './pages/Messages';
+import Providers from './pages/Providers';
 import Home from './pages/Home';
 
 import Header from './components/Header';
@@ -62,6 +65,10 @@ function App() {
                      <Route exact path='/signup' component={Signup} />
                      <Route exact path='/selectdate' component={SelectDate} />
                      <Route exact path='/timeavailable/:provider/:specialty/:date' component={TimeAvailable} />
+                     <Route exact path='/scheduleappt' component={ScheduleAppt} />
+                     <Route exact path='/messages' component={Messages}/>
+                     <Route exact path='/providers' component={Providers}/>
+
                   </Switch>
                </div>
                <Footer />

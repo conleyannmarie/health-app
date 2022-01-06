@@ -1,6 +1,5 @@
 import { gql } from '@apollo/client';
 
-
 export const QUERY_PROVIDERS_BY_SPEC = gql`
    query providers_by_spec($specialty: String!) {
       providers_by_spec(specialty: $specialty) {
@@ -40,12 +39,35 @@ export const QUERY_GET_APPT_PROVIDER = gql`
    }
 `;
 
+// Query specialties
+export const QUERY_GET_SPEC = gql`
+   query providers_by_spec($specialty: String) {
+      providers_by_spec(specialty: $specialty) {
+         specialty
+      }
+   }
+`;
+
+//doctors in tables
 export const QUERY_USER = gql`
    query user($username: String!) {
       user(username: $username) {
          _id
          username
          email
+      }
+   }
+`;
+
+export const QUERY_USER_BY_ID = gql`
+   query userById($id: ID!) {
+      userById(_id: $id) {
+         _id
+         username
+         email
+         isProvider
+         specialty
+         npiNumber
       }
    }
 `;

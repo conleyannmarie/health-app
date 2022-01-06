@@ -29,6 +29,7 @@ const userSchema = new Schema(
 
       specialty: {
          type: String,
+         allowNull: false
       },
 
       npiNumber: {
