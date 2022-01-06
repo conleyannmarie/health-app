@@ -188,7 +188,6 @@ footer {
 .btn-add {
    background-color: var(--primary-color) !important;
    color: #ffffff !important;
-   float: right;
    margin: 20px;
 }
 

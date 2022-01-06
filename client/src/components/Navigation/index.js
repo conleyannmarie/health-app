@@ -13,7 +13,7 @@ const Navigation = () => {
             {/* calendar */}
             <a className='btn btn-outline-light btn-lg' href='#' role='button'>
                {' '}
-               <i className='bi bi-calendar-event'></i>{' '}
+               <i className='bi bi-calendar-event '></i>{' '}
             </a>
             {/* Schedule */}
             <a className='btn btn-outline-light btn-lg' href='/selectdate' role='button'>
