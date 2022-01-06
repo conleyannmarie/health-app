@@ -1,5 +1,12 @@
 # Health-App2
 
+## User Story
+
+AS a Patient
+I WANT to be able to contact my doctors via messaging and schedule appointments online.
+AS a Provider
+I WANT to be able to respond to patients
+
 ## What do We Do?
 
 We connect patients to Doctors in a stress-free way.
