@@ -6,7 +6,7 @@ import './App.css';
 
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import ScheduleAppt from './pages/ScheduleAppt';
+import SelectProvider from './pages/SelectProvider';
 import Messages from './pages/Messages';
 import Providers from './pages/Providers';
 import Home from './pages/Home';
@@ -63,12 +63,11 @@ function App() {
                      <Route exact path='/' component={Home} />
                      <Route exact path='/login' component={Login} />
                      <Route exact path='/signup' component={Signup} />
-                     <Route exact path='/selectdate' component={SelectDate} />
+                     <Route exact path='/selectdate/:provider/:specialty' component={SelectDate} />
                      <Route exact path='/timeavailable/:provider/:specialty/:date' component={TimeAvailable} />
-                     <Route exact path='/scheduleappt' component={ScheduleAppt} />
-                     <Route exact path='/messages' component={Messages}/>
-                     <Route exact path='/providers' component={Providers}/>
-
+                     <Route exact path='/selectprovider' component={SelectProvider} />
+                     {/* <Route exact path='/messages' component={Messages}/> */}
+                     <Route exact path='/providers' component={Providers} />
                   </Switch>
                </div>
                <Footer />

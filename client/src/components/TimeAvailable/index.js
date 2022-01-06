@@ -73,8 +73,8 @@ const TimeAvailable = (props) => {
       <div className='card login-signup-card shadow-sm'>
          <div className='card-body'>
             <h3>Create Appointment</h3>
-            <p>{timeState.provider}</p>
-            <p>{timeState.specialty}</p>
+            <p className='text-selectdate'>{timeState.provider}</p>
+            <p className='text-selectdate'>{timeState.specialty}</p>
             <p>{timeState.date}</p>
             {availableSlots.map((availableSlot) => (
                <Button

@@ -67,6 +67,10 @@ footer {
    color: #a7a7a7;
 }
 
+.text-selectdate {
+   font-weight: bold;
+}
+
 .bg-light {
    background-color: var(--primary-color) !important;
 }
@@ -126,8 +130,6 @@ footer {
    padding-bottom: 75px;
    padding-top: 30px;
 }
-
-
 
 .profile-menu-item {
    margin-right: 25px;
@@ -265,9 +267,4 @@ footer {
    margin: 20px 0;
    height: 60px;
    text-align: left !important;
-   
-   
-
 }
-
-

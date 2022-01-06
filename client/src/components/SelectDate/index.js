@@ -8,10 +8,8 @@ import { Link } from 'react-router-dom';
 const SelectDate = (props) => {
    const [selectDateState, setSelectDateState] = useState({
       date: new Date(),
-      // provider: props.provider,
-      // specialty: props.specialty,
-      provider: 'FamDoc3',
-      specialty: 'IM A DOCTOR',
+      provider: props.match.params.provider,
+      specialty: props.match.params.specialty,
    });
 
    const handleCalendarChange = (event) => {
@@ -27,15 +25,16 @@ const SelectDate = (props) => {
    return (
       <div className='card login-signup-card shadow-sm'>
          <div className='card-body'>
-            <p>
+            <h1>Select Date</h1>
+            <p className='text-selectdate'>
                Provider: <span>{selectDateState.provider}</span>
             </p>
-            <p>
+            <p className='text-selectdate'>
                Specialty: <span>{selectDateState.specialty}</span>
             </p>
          </div>
          <span>Check availablity</span>
-         <div className='create-appt' style={{display: "flex", alignItems: "center" }}>
+         <div className='create-appt' style={{ display: 'flex', alignItems: 'center' }}>
             <DatePicker
                selected={selectDateState.date}
                onChange={(selectedDate) => handleCalendarChange(selectedDate)}
