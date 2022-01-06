@@ -16,7 +16,7 @@ const Navigation = () => {
                <i className='bi bi-calendar-event'></i>{' '}
             </a>
             {/* Schedule */}
-            <a className='btn btn-outline-light btn-lg' href='/datepicker' role='button'>
+            <a className='btn btn-outline-light btn-lg' href='/selectdate' role='button'>
                {' '}
                <i className='bi bi-calendar-plus'></i>{' '}
             </a>
