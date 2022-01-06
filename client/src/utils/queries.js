@@ -63,8 +63,8 @@ export const QUERY_GET_APPT = gql`
 `;
 
 export const QUERY_GET_APPT_PROVIDER = gql`
-   query getApptsProvider($apptWith: String!) {
-      getApptsProvider(apptWith: $apptWith) {
+   query getApptsProvider($apptWith: String!, $apptDate: Date!) {
+      getApptsProvider(apptWith: $apptWith, apptDate: $apptDate) {
          _id
          username
          apptDate

@@ -51,8 +51,8 @@ const resolvers = {
       },
 
       //* Get all appointments by provider
-      getApptsProvider: async (parent, { apptWith }) => {
-         return Appointment.find({ apptWith: apptWith }).sort({ date: 1 });
+      getApptsProvider: async (parent, { apptWith, apptDate }) => {
+         return Appointment.find({ apptWith: apptWith, apptDate: apptDate }).sort({ date: 1 });
       },
 
       messages: async (parent, { username }) => {

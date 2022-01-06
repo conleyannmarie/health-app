@@ -42,7 +42,6 @@ const SelectDate = (props) => {
                onCalendarOpen={handleCalendarOpen}
             />
             <Link
-               // to={`/timeavailable/?${selectDateState.provider}/?${selectDateState.specialty}/?${selectDateState.date}`}
                to={`/timeavailable/${selectDateState.provider}/${selectDateState.specialty}/${selectDateState.date}`}
             >
                Check availability

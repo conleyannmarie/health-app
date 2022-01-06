@@ -51,7 +51,7 @@ const typeDefs = gql`
       providers_by_spec(specialty: String!): [User]
       provider(username: String!, isProvider: Boolean!, specialty: String!): User
       getAppointments(username: String!): [Appointment]
-      getApptsProvider(apptWith: String!): [Appointment]
+      getApptsProvider(apptWith: String!, apptDate: Date!): [Appointment]
    }
 
    type Mutation {
