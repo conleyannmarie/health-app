@@ -47,7 +47,7 @@ header nav {
 }
 
 .header-nav-link {
-   margin-left: 15px;
+   margin-left: 10px;
 }
 
 .site-logo {
@@ -269,4 +269,6 @@ footer {
    color: #ffffff !important;
    margin: 20px 0;
    height: 60px;
+   
+
 }

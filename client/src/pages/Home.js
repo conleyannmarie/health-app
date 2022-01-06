@@ -15,24 +15,21 @@ const Home = () => {
             {/* homepage button need to link */}
             {loggedIn && (
                <div>
-                  <button className='btn w-100 btn-home' type='submit'>
-                     <i className='bi bi-calendar-event'></i>My Appointments
-                  </button>
-                  <button className='btn w-100 btn-home' type='submit'>
-                     <i className='bi bi-calendar-plus'></i> Make Appointments
-                     <p>
-                        <Link to='/selectdate'>Select Date</Link>
-                     </p>
-                  </button>
-                  <button className='btn w-100 btn btn-home' type='submit'>
-                     <i className='bi bi-chat-left-dots'></i>Message
-                  </button>
-                  <button className='btn w-100 btn-home' type='submit'>
-                     <i className='bi bi-clipboard-data'></i>Reviews
-                  </button>
-                  <button className='btn w-100 btn-home ' type='submit'>
-                     <i className='bi bi-wallet2'></i>Donate
-                  </button>
+                  <a className='btn w-100 btn-home' href='# ' role='button'>
+                     <i className=' bi bi-calendar-event'></i> My Appointments
+                  </a>
+                  <a className='btn w-100 btn-home' href='/selectDate' role='button'>
+                     <i className='bi bi-calendar-plus me-5'></i> Make Appointments
+                  </a>
+                  <a className='btn w-100 btn btn-home' href='#' role='button'>
+                     <i className='d-flex  bi bi-chat-left-dots me-5'></i>Message
+                  </a>
+                  <a className='btn w-100 btn-home' href='#' role='button'>
+                     <i className='d-flex bi bi-clipboard-data me-5'></i> <span className='ps-5 '>Reviews</span>
+                  </a>
+                  <a className='btn w-100 btn-home ' href='#' role='button'>
+                     <i className='bi bi-wallet2 me-5'></i>Donate
+                  </a>
                </div>
             )}
          </div>
