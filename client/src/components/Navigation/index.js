@@ -1,14 +1,22 @@
 import React from 'react';
+import Auth from '../../utils/auth';
 
 const Navigation = () => {
    return (
       <nav className='navbar fixed-bottom navbar-expand-lg navbar-dark bg-primary'>
          <form className='container-fluid justify-content-evenly'>
             {/* Home tab */}
-            <a className='btn  btn-outline-light btn-lg' href='/home' role='button'>
-               {' '}
-               <i className='bi bi-house'></i>
-            </a>
+            {Auth.loggedIn() ? (
+               <a className='btn  btn-outline-light btn-lg' href='/home' role='button'>
+                  {' '}
+                  <i className='bi bi-house'></i>
+               </a>
+            ) : (
+               <a className='btn  btn-outline-light btn-lg' href='/login' role='button'>
+                  {' '}
+                  <i className='bi bi-house'></i>
+               </a>
+            )}
 
             {/* calendar */}
             <a className='btn btn-outline-light btn-lg' href='#' role='button'>
