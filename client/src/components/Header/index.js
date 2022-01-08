@@ -11,37 +11,26 @@ const Header = () => {
 
    return (
       <header>
-          <h5>
-              {Auth.loggedIn() ? 
-                  <Link to="../">Health-App</Link>
-              :
-                  <Link to="/login">Health-App</Link>
-              }
-          </h5>
+         <h5>{Auth.loggedIn() ? <Link to='/home'>Health-App</Link> : <Link to='/login'>Health-App</Link>}</h5>
 
          <nav>
-             {Auth.loggedIn() && 
-              <>
-              <span className="header-nav-link">
-                        <span>{Auth.getProfile().data.username}</span>
-                    </span>
-                    <span className="header-nav-link">
-                        <span>|</span>
-                    </span>
-                    <span className="header-nav-link"></span>
-              
-                      <a href="/login" onClick={logout}>
-                          Logout
-                      </a>
-                  
-              </>
-             }
+            {Auth.loggedIn() && (
+               <>
+                  <span className='header-nav-link'>
+                     <span>{Auth.getProfile().data.username}</span>
+                  </span>
+                  <span className='header-nav-link'>
+                     <span>|</span>
+                  </span>
+                  <span className='header-nav-link'></span>
+
+                  <a href='/login' onClick={logout}>
+                     Logout
+                  </a>
+               </>
+            )}
          </nav>
-          
       </header>
-      
-        
-    
    );
 };
 
